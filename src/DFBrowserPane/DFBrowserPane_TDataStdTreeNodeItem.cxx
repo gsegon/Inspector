@@ -16,8 +16,8 @@
 #include <inspector/DFBrowserPane_TDataStdTreeNodeItem.hxx>
 #include <inspector/DFBrowserPane_Tools.hxx>
 
-#include <inspector/DFBrowser_Module.hxx>
-#include <inspector/DFBrowser_Tools.hxx>
+// #include <inspector/DFBrowser_Module.hxx>
+// #include <inspector/DFBrowser_Tools.hxx>
 
 #include <inspector/DFBrowserPane_AttributePane.hxx>
 #include <inspector/DFBrowserPane_Tools.hxx>

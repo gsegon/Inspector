@@ -15,6 +15,7 @@
 
 #include <inspector/TInspector_PluginParameters.hxx>
 #include <inspector/TInspector_Preferences.hxx>
+#include <inspector/TInspector_Window.hxx>
 
 // =======================================================================
 // function : Constructor

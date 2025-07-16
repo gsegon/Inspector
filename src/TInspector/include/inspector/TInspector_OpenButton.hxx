@@ -23,8 +23,9 @@
 #include <QMap>
 #include <QStringList>
 #include <Standard_WarningsRestore.hxx>
+#include <QPushButton>
 
-class QPushButton;
+// class QPushButton;
 
 //! \class TInspector_OpenButton
 //! Class that contains push button and the button processing. It obtains a file name from the

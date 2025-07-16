@@ -21,7 +21,9 @@
 
 #include <inspector/TInspectorAPI_PluginParameters.hxx>
 #include <inspector/TInspector_Preferences.hxx>
-#include <inspector/TInspector_Window.hxx>
+// #include <inspector/TInspector_Window.hxx>
+
+class TInspector_Window;
 
 //! \class TInspector_PluginParameters.
 //! \brief This is plugin parameters extended by a possibility to activate module during setting new

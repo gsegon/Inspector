@@ -1,12 +1,19 @@
-project(TInspectorEXE)
+add_executable(TInspector_EXE TInspectorEXE.cxx)
 
-OCCT_INCLUDE_CMAKE_FILE (adm/cmake/occt_toolkit_prepare_tool)
-set (EXECUTABLE_PROJECT ON)
-OCCT_INCLUDE_CMAKE_FILE (adm/cmake/occt_toolkit)
-unset (EXECUTABLE_PROJECT)
-OCCT_INCLUDE_CMAKE_FILE (adm/cmake/occt_toolkit_prepare_tool)
+target_link_libraries(TInspector_EXE PRIVATE inspector_tinspector)
 
-# This project depends from Qt.
-# Qt 5.11.2 is incompatible with c++20.
-# So, it should be compiled with c++11/c++14 language standard.
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
+# Link OCC targets
+target_link_libraries(TInspector_EXE PRIVATE
+        TKernel
+)
+
+# Link QT targets
+target_link_libraries(TInspector_EXE PRIVATE
+        Qt5::Core
+        Qt5::Gui
+        Qt5::Widgets
+)
+
+
+
+

@@ -23,9 +23,9 @@
 #include <QStringList>
 #include <QItemDelegate>
 #include <Standard_WarningsRestore.hxx>
+#include <QObject>
+#include <QPainter>
 
-class QObject;
-class QPainter;
 
 //! \class TInspectorEXE_OpenFileItemDelegate
 //! Draws large(40x40) icons in cell. The icon background in colored in highlight when mouse is over

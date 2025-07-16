@@ -21,10 +21,12 @@
 
 #include <Standard_WarningsDisable.hxx>
 #include <QObject>
+#include <QEvent>
 #include <Standard_WarningsRestore.hxx>
+#include <inspector/TInspector_Window.hxx>
+
 
 class TInspector_Window;
-class QEvent;
 
 //! \class TInspector_Shortcut
 //! Listens application KeyRelease event. Processes key event:

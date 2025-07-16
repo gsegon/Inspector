@@ -31,8 +31,8 @@ endif()
 if (USE_QT)
   # Qt dependencies
   OCCT_INCLUDE_CMAKE_FILE (adm/cmake/qt_macro)
-  FIND_QT_PACKAGE(PROJECT_LIBRARIES_DEBUG PROJECT_LIBRARIES_RELEASE PROJECT_INCLUDES)
-  include_directories("${PROJECT_INCLUDES}")
+#  FIND_QT_PACKAGE(PROJECT_LIBRARIES_DEBUG PROJECT_LIBRARIES_RELEASE PROJECT_INCLUDES)
+#  include_directories("${PROJECT_INCLUDES}")
 endif(USE_QT)
 
 set (PRECOMPILED_DEFS)
@@ -113,8 +113,9 @@ if (MSVC)
 endif()
 
 if (USE_QT)
-  FIND_AND_WRAP_MOC_FILES("${USED_INCFILES}" "${PROJECT_NAME}_MOC_FILES")
+#  FIND_AND_WRAP_MOC_FILES("${USED_INCFILES}" "${PROJECT_NAME}_MOC_FILES")
   #message("MOC files: ${${PROJECT_NAME}_MOC_FILES}")
+#  target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core)
 endif (USE_QT)
 
 if (EXECUTABLE_PROJECT)
@@ -282,12 +283,18 @@ endif()
 
 target_link_libraries (${PROJECT_NAME} ${USED_TOOLKITS_BY_CURRENT_PROJECT} ${USED_EXTERNAL_LIBS_BY_CURRENT_PROJECT})
 
+message("USE_QT: " ${USE_QT})
+
 if (USE_QT)
   foreach (PROJECT_LIBRARY_DEBUG ${PROJECT_LIBRARIES_DEBUG})
-    target_link_libraries (${PROJECT_NAME} debug ${PROJECT_LIBRARY_DEBUG})
+    message("We are here!!!!")
+    target_link_libraries(${PROJECT_NAME} debug Qt5::Core Qt5::Widgets)
+#    target_link_libraries (${PROJECT_NAME} debug ${PROJECT_LIBRARY_DEBUG})
   endforeach()
   foreach (PROJECT_LIBRARY_RELEASE ${PROJECT_LIBRARIES_RELEASE})
-    target_link_libraries (${PROJECT_NAME} optimized ${PROJECT_LIBRARY_RELEASE})
+    message("We are here!!!!(releae)")
+    target_link_libraries(${PROJECT_NAME} optimized Qt6::Core)
+#    target_link_libraries (${PROJECT_NAME} optimized ${PROJECT_LIBRARY_RELEASE})
   endforeach()
 endif()
 

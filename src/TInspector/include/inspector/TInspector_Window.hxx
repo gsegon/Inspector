@@ -28,15 +28,18 @@
 #include <QString>
 #include <Standard_WarningsRestore.hxx>
 
-class TInspectorAPI_Communicator;
-class TInspector_Shortcut;
 
-class QButtonGroup;
-class QMainWindow;
-class QHBoxLayout;
-class QPushButton;
-class QStackedWidget;
-class QToolButton;
+
+#include <QButtonGroup>
+#include <QMainWindow>
+#include <QHBoxLayout>
+#include <QPushButton>
+#include <QStackedWidget>
+#include <QToolButton>
+#include <inspector/TInspectorAPI_Communicator.hxx>
+
+#include "TInspector_Shortcut.hxx"
+class TInspector_Shortcut;
 
 //! \class Inspector_Window
 //! Control that contains:
