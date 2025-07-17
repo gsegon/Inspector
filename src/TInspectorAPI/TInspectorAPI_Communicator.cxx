@@ -47,15 +47,21 @@ TInspectorAPI_Communicator* TInspectorAPI_Communicator::LoadPluginLibrary(
   aPluginLibraryName += ".so";
 #endif
 
-  COMMUNICATOR_INSTANCE crtInst = 0;
+  COMMUNICATOR_INSTANCE crtInst = nullptr;
 #ifdef _WIN32
   HINSTANCE modLib = ::LoadLibraryA((LPCSTR)aPluginLibraryName.ToCString());
 #else
-  void* modLib = dlopen(aPluginLibraryName.ToCString(), RTLD_LAZY | RTLD_GLOBAL);
+  void* modLib = dlopen("/home/gordan/Programs/gsegon/Inspector/src/cmake-build-debug/DFBrowser/libTKDFBrowser.so", RTLD_LAZY | RTLD_GLOBAL);
 #endif
 
+
+  if (!modLib) {
+    std::cout << "dlopen error: " << dlerror() << std::endl;
+  }
+
+
   if (!modLib)
-    std::cout << "Failed to load plugin." << aPluginLibraryName.ToCString() << std::endl;
+    std::cout << "Ayo! Failed to load plugin: " << aPluginLibraryName.ToCString() << std::endl;
   else
   {
 #ifdef _WIN32
@@ -67,6 +73,18 @@ TInspectorAPI_Communicator* TInspectorAPI_Communicator::LoadPluginLibrary(
       std::cout << "Failed to find " << CREATE_COMMUNICATOR_FUNCTION_NAME << " function."
                 << std::endl;
   }
-  TInspectorAPI_Communicator* aModule = crtInst ? crtInst() : 0;
+
+
+
+
+  TInspectorAPI_Communicator* aModule = crtInst ? crtInst() : nullptr;
+  if (!aModule)
+  {
+    std::cout << "Failed to create communicator." << std::endl;
+  }
+  else
+  {
+    std::cout << "Communicator created." << std::endl;
+  }
   return aModule;
 }

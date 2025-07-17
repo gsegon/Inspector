@@ -1,6 +1,9 @@
-cmake_minimum_required (VERSION 3.10 FATAL_ERROR)
 
-add_library(dfbrowser_pane STATIC
+file(GLOB_RECURSE INSPECTOR_HEADERS
+        "include/inspector/*.hxx"
+)
+
+add_library(dfbrowser_pane
         DFBrowserPane_AttributePane.cxx
         DFBrowserPane_AttributePaneCreator.cxx
         DFBrowserPane_AttributePaneModel.cxx
@@ -19,8 +22,12 @@ add_library(dfbrowser_pane STATIC
         DFBrowserPane_TNamingNaming.cxx
         DFBrowserPane_TNamingUsedShapes.cxx
         DFBrowserPane_Tools.cxx
+        ${INSPECTOR_HEADERS}            # Added to force MOC processing the headers
 )
+
+
 target_include_directories(dfbrowser_pane PUBLIC include)
+
 
 target_link_libraries(dfbrowser_pane PRIVATE inspector_tinspector_api)
 target_link_libraries(dfbrowser_pane PRIVATE inspector_tree_model)

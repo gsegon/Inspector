@@ -45,6 +45,7 @@ target_link_libraries(inspector_tinspector PUBLIC inspector_tinspector_api)
 target_link_libraries(inspector_tinspector PRIVATE inspector_view)
 
 
+
 # Link OCC targets
 target_link_libraries(inspector_tinspector PRIVATE
         ${OpenCASCADE_FoundationClasses_LIBRARIES}

@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.10 FATAL_ERROR)
+
 
 # Setup QT resources
 set(RESOURCE_FILES
@@ -6,7 +6,7 @@ set(RESOURCE_FILES
 )
 qt_add_resources(RESOURCES_RCC ${RESOURCE_FILES})
 
-add_library(inspector_tree_model STATIC
+add_library(inspector_tree_model SHARED
         TreeModel_ContextMenu.cxx
         TreeModel_ItemBase.cxx
         TreeModel_ItemProperties.cxx
@@ -15,10 +15,11 @@ add_library(inspector_tree_model STATIC
         TreeModel_Tools.cxx
         TreeModel_VisibilityState.cxx
         ${RESOURCES_RCC}
+        include/inspector/TreeModel_ContextMenu.hxx
 )
 target_include_directories(inspector_tree_model PUBLIC include)
 
-target_link_libraries(inspector_tree_model PRIVATE inspector_view_control)
+target_link_libraries(inspector_tree_model PUBLIC view_control_types)
 target_link_libraries(inspector_tree_model PUBLIC inspector_convert)
 
 # Link OCC targets

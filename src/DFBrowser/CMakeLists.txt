@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.10 FATAL_ERROR)
+#cmake_minimum_required(VERSION 3.30)
 
 # Setup QT resources
 set(RESOURCE_FILES
@@ -6,7 +6,11 @@ set(RESOURCE_FILES
 )
 qt_add_resources(RESOURCES_RCC ${RESOURCE_FILES})
 
-add_library(dfbrowser SHARED
+file(GLOB_RECURSE INSPECTOR_HEADERS
+        "include/inspector/*.hxx"
+)
+
+add_library(TKDFBrowser SHARED
         DFBrowser_AttributePaneStack.cxx
         DFBrowser_Communicator.cxx
         DFBrowser_DumpView.cxx
@@ -30,23 +34,33 @@ add_library(dfbrowser SHARED
         DFBrowser_TreeModel.cxx
         DFBrowser_Window.cxx
         ${RESOURCES_RCC}
+        ${INSPECTOR_HEADERS}    # Added to force MOC processing headers
+
 )
-target_include_directories(dfbrowser PUBLIC include)
+target_include_directories(TKDFBrowser PUBLIC include)
 
-target_link_libraries(dfbrowser PUBLIC inspector_tinspector_api)
-target_link_libraries(dfbrowser PRIVATE inspector_tree_model)
+target_link_libraries(TKDFBrowser PUBLIC inspector_tinspector_api)
+target_link_libraries(TKDFBrowser PRIVATE inspector_tree_model)
 
-target_link_libraries(dfbrowser PRIVATE dfbrowser_pane)
-target_link_libraries(dfbrowser PRIVATE inspector_view_control)
-target_link_libraries(dfbrowser PRIVATE inspector_view)
+target_link_libraries(TKDFBrowser PRIVATE dfbrowser_pane)
+target_link_libraries(TKDFBrowser PRIVATE view_control)
+target_link_libraries(TKDFBrowser PRIVATE inspector_view)
 
 # Link OCC targets
-target_link_libraries(dfbrowser PRIVATE
+target_link_libraries(TKDFBrowser PRIVATE
         TKernel
+#        ${OpenCASCADE_ModelingData_LIBRARIES}
+#        ${OpenCASCADE_ModelingAlgorithms_LIBRARIES}
+        ${OpenCASCADE_DataExchange_LIBRARIES}
+        ${OpenCASCADE_ApplicationFramework_LIBRARIES}
+        TKOpenGl
+
 )
 
+#target_link_libraries(TKDFBrowser PUBLIC OpenGL)
+
 # Link QT targets
-target_link_libraries(dfbrowser PRIVATE
+target_link_libraries(TKDFBrowser PRIVATE
         Qt5::Core
         Qt5::Widgets
 )
