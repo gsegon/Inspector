@@ -1,4 +1,5 @@
-#cmake_minimum_required(VERSION 3.30)
+
+add_subdirectory(Pane)
 
 # Setup QT resources
 set(RESOURCE_FILES
@@ -9,6 +10,8 @@ qt_add_resources(RESOURCES_RCC ${RESOURCE_FILES})
 file(GLOB_RECURSE INSPECTOR_HEADERS
         "include/inspector/*.hxx"
 )
+
+
 
 add_library(TKDFBrowser SHARED
         DFBrowser_AttributePaneStack.cxx
