@@ -98,7 +98,7 @@ ShapeView_Window::ShapeView_Window(QWidget* theParent)
   myTreeView->setModel(aModel);
   ShapeView_VisibilityState* aVisibilityState = new ShapeView_VisibilityState(aModel);
   aModel->SetVisibilityState(aVisibilityState);
-  TreeModel_Tools::UseVisibilityColumn(myTreeView);
+  TreeModel_Tools::UseVisibilityColumn(myTreeView, true);
   QObject::connect(myTreeView,
                    SIGNAL(clicked(const QModelIndex&)),
                    aVisibilityState,
@@ -208,7 +208,6 @@ void ShapeView_Window::SetPreferences(const PluginAPI_PreferencesDataMap& theIte
   if (theItem.IsEmpty())
   {
     TreeModel_Tools::SetDefaultHeaderSections(myTreeView);
-    return;
   }
 
   for (TInspectorAPI_IteratorOfPreferencesDataMap anItemIt(theItem); anItemIt.More();

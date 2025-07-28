@@ -14,7 +14,7 @@ add_library(inspector_tree_model SHARED
         TreeModel_ModelBase.cxx
         TreeModel_Tools.cxx
         TreeModel_VisibilityState.cxx
-        ${RESOURCE_FILES_TREE_MODEL}
+        ${RESOURCES_RCC_TREE_MODEL}
         include/inspector/TreeModel_ContextMenu.hxx
 )
 target_include_directories(inspector_tree_model PUBLIC include)

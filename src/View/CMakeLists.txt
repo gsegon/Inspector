@@ -1,3 +1,5 @@
+add_subdirectory(ViewControl)
+
 # Setup QT resources
 set(RESOURCE_FILES_VIEW
         View.qrc

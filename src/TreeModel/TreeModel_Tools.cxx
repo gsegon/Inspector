@@ -162,7 +162,7 @@ void TreeModel_Tools::UseVisibilityColumn(QTreeView* theTreeView, const bool the
 
   TreeModel_ModelBase*     aModel = dynamic_cast<TreeModel_ModelBase*>(theTreeView->model());
   TreeModel_HeaderSection* anItem = aModel->ChangeHeaderItem((int)TreeModel_ColumnType_Visibility);
-  anItem->SetIsHidden(theActive);
+  anItem->SetIsHidden(!theActive);
   anItem->SetWidth(TreeModel_ModelBase::ColumnVisibilityWidth());
 
   aModel->SetUseVisibilityColumn(theActive);
