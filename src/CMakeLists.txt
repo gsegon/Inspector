@@ -34,3 +34,5 @@ add_subdirectory(TInspectorEXE)
 
 add_subdirectory(DFBrowserPane)
 add_subdirectory(DFBrowser)
+
+add_subdirectory(throwaways)
