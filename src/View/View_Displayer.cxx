@@ -22,12 +22,12 @@
 #include <AIS_Trihedron.hxx>
 #include <AIS_ViewCube.hxx>
 #include <Geom_Axis2Placement.hxx>
-#include <Prs3d_PointAspect.hxx>
+// #include <Prs3d_PointAspect.hxx>
 #include <V3d_View.hxx>
 #include <V3d_Viewer.hxx>
 
 #include <inspector/View_DisplayPreview.hxx>
-#include <inspector/View_Viewer.hxx>
+// #include <inspector/View_Viewer.hxx>
 
 // =======================================================================
 // function : Constructor

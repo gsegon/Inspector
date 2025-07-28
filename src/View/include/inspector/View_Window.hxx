@@ -47,19 +47,19 @@ public:
     const bool                            isFitAllActive = true);
 
   //! Destructor
-  virtual ~View_Window() {}
+  ~View_Window() override;
 
   //! Returns view displayer
-  View_Displayer* Displayer() const { return myDisplayer; }
+  View_Displayer* Displayer() const { return myDisplayer.get(); }
 
   //! Returns view widget
-  View_Widget* ViewWidget() const { return myView; }
+  View_Widget* ViewWidget() const { return myView.get(); }
 
   //! Returns actions tool bar
-  QToolBar* ActionsToolBar() const { return myActionsToolBar; }
+  QToolBar* ActionsToolBar() const { return myActionsToolBar.get(); }
 
   //! Returns window tool bar
-  View_ToolBar* ViewToolBar() const { return myViewToolBar; }
+  View_ToolBar* ViewToolBar() const { return myViewToolBar.get(); }
 
   //! Sets a new context for context type
   //! \param theType a type of context, will be selected in the tool bar combo box
@@ -133,10 +133,10 @@ protected slots:
   void onDisplayModeChanged();
 
 private:
-  View_Displayer* myDisplayer;      //!< displayer
-  View_Widget*    myView;           //!< view widget
-  QToolBar*       myActionsToolBar; //!< actions tool bar
-  View_ToolBar*   myViewToolBar;    //!< window tool bar
+  std::unique_ptr<View_Displayer> myDisplayer;      //!< displayer
+  std::unique_ptr<View_Widget>    myView;           //!< view widget
+  std::unique_ptr<QToolBar>       myActionsToolBar; //!< actions tool bar
+  std::unique_ptr<View_ToolBar>   myViewToolBar;    //!< window tool bar
   std::unique_ptr<QGridLayout>    myLayout;         //!< layout
 };
 

@@ -48,48 +48,53 @@ View_Window::View_Window(QWidget*                              theParent,
                          const bool                            isFitAllActive)
     : QWidget(theParent)
 {
+
+  // Layout init
   myLayout = std::make_unique<QGridLayout>(this);
   myLayout->setContentsMargins(0, 0, 0, 0);
   myLayout->setSpacing(DEFAULT_SPACING);
 
-  myView        = new View_Widget(this, theContext, isFitAllActive);
-  myViewToolBar = new View_ToolBar(this, isUseKeepView);
+  myView        = std::make_unique<View_Widget>(this, theContext, isFitAllActive);
+  myViewToolBar = std::make_unique<View_ToolBar>(this, isUseKeepView);
   myLayout->addWidget(myViewToolBar->GetControl(), 0, 0, 1, 2);
-  connect(myViewToolBar, SIGNAL(contextChanged()), this, SLOT(onViewSelectorActivated()));
-  connect(myViewToolBar, SIGNAL(actionClicked(int)), this, SLOT(onToolBarActionClicked(int)));
+  connect(myViewToolBar.get(), SIGNAL(contextChanged()), this, SLOT(onViewSelectorActivated()));
+  connect(myViewToolBar.get(), SIGNAL(actionClicked(int)), this, SLOT(onToolBarActionClicked(int)));
 
-  connect(myView,
+  connect(myView.get(),
           SIGNAL(checkedStateChanged(int, bool)),
           this,
           SLOT(onCheckedStateChanged(int, bool)));
 
   myView->setContextMenuPolicy(Qt::CustomContextMenu);
-  connect(myView,
+  connect(myView.get(),
           SIGNAL(customContextMenuRequested(const QPoint&)),
           this,
           SLOT(onViewContextMenuRequested(const QPoint&)));
 
-  myActionsToolBar = new QToolBar(this);
+  myActionsToolBar = std::make_unique<QToolBar>(this);
   myActionsToolBar->layout()->setContentsMargins(0, 0, 0, 0);
   myActionsToolBar->setOrientation(Qt::Vertical);
 
   myActionsToolBar->addWidget(myView->GetWidget(View_ViewActionType_FitAllId));
   myActionsToolBar->addAction(myView->ViewAction(View_ViewActionType_DisplayModeId));
 
-  myLayout->addWidget(myActionsToolBar, 1, 0);
-  myLayout->addWidget(myView, 1, 1);
+  myLayout->addWidget(myActionsToolBar.get(), 1, 0);
+  myLayout->addWidget(myView.get(), 1, 1);
   myLayout->setRowStretch(1, 1);
 
   Handle(AIS_InteractiveContext) aContext = myView->GetViewer()->GetContext();
   myViewToolBar->SetContext(View_ContextType_Own, aContext);
 
-  myDisplayer = new View_Displayer();
+  myDisplayer = std::make_unique<View_Displayer>();
   if (!isUseKeepView)
     myDisplayer->KeepPresentations(true);
   myDisplayer->SetFitAllActive(isFitAllActive);
-  connect(myView, SIGNAL(displayModeClicked()), this, SLOT(onDisplayModeChanged()));
+  connect(myView.get(), SIGNAL(displayModeClicked()), this, SLOT(onDisplayModeChanged()));
   onViewSelectorActivated();
 }
+
+View_Window::~View_Window() = default;
+
 
 // =======================================================================
 // function : SetContext
