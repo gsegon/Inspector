@@ -28,8 +28,7 @@ add_library(dfbrowser_pane
 
 target_include_directories(dfbrowser_pane PUBLIC include)
 
-
-target_link_libraries(dfbrowser_pane PRIVATE inspector_tinspector_api)
+target_link_libraries(dfbrowser_pane PRIVATE plugin_api)
 target_link_libraries(dfbrowser_pane PRIVATE inspector_tree_model)
 
 

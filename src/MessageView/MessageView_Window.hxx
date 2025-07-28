@@ -21,7 +21,7 @@
 #include <TCollection_AsciiString.hxx>
 
 #include <inspector/MessageModel_Actions.hxx>
-#include <inspector/TInspectorAPI_PluginParameters.hxx>
+#include <inspector/PluginAPI_PluginParameters.hxx>
 
 #include <AIS_InteractiveContext.hxx>
 #include <AIS_InteractiveObject.hxx>
@@ -69,7 +69,7 @@ public:
 
   //! Sets parameters container, it should be used when the plugin is initialized or in update
   //! content \param theParameters a parameters container
-  void SetParameters(const Handle(TInspectorAPI_PluginParameters)& theParameters)
+  void SetParameters(const Handle(PluginAPI_PluginParameters)& theParameters)
   {
     myParameters = theParameters;
     myTreeViewActions->SetParameters(theParameters);
@@ -81,11 +81,11 @@ public:
 
   //! Returns plugin preferences: dock widgets state, tree view columns.
   //! \param theItem container of preference elements
-  Standard_EXPORT void GetPreferences(TInspectorAPI_PreferencesDataMap& theItem);
+  Standard_EXPORT void GetPreferences(PluginAPI_PreferencesDataMap& theItem);
 
   //! Applies plugin preferences
   //! \param theItem container of preference elements
-  Standard_EXPORT void SetPreferences(const TInspectorAPI_PreferencesDataMap& theItem);
+  Standard_EXPORT void SetPreferences(const PluginAPI_PreferencesDataMap& theItem);
 
   //! Applies parameters to Init controls, opens files if there are in parameters, updates OCAF tree
   //! view model
@@ -193,7 +193,7 @@ private:
   QTableView*  myCustomView;        //!< table that units messages by name.
   QDockWidget* myCustomPanelWidget; //!< panel for table that units messages by name.
 
-  Handle(TInspectorAPI_PluginParameters) myParameters; //!< plugins parameters container
+  Handle(PluginAPI_PluginParameters) myParameters; //!< plugins parameters container
 
   Handle(AIS_InteractiveObject)
     myPreviewPresentation; //!< presentation of preview for a selected object

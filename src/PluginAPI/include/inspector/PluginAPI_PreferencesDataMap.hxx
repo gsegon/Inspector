@@ -13,13 +13,15 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#include <inspector/ShapeView_Communicator.hxx>
+#ifndef PluginAPI_PreferencesDataMap_H
+#define PluginAPI_PreferencesDataMap_H
 
-// =======================================================================
-// function :  CreateCommunicator
-// purpose : Creates a communicator by the library loading
-// =======================================================================
-Standard_EXPORTEXTERNC PluginAPI_Communicator* CreateCommunicator()
-{
-  return new ShapeView_Communicator();
-}
+#include <NCollection_DataMap.hxx>
+#include <TCollection_AsciiString.hxx>
+
+typedef NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString>
+  PluginAPI_PreferencesDataMap;
+typedef NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString>::Iterator
+  TInspectorAPI_IteratorOfPreferencesDataMap;
+
+#endif

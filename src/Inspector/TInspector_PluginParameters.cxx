@@ -13,38 +13,47 @@
 // Alternatively, this file may be used under the terms of Open CASCADE
 // commercial license or contractual agreement.
 
-#include <inspector/DFBrowser_Communicator.hxx>
-
-#include <inspector/DFBrowser_Module.hxx>
-#include <inspector/DFBrowser_Window.hxx>
-
-// =======================================================================
-// function : CreateCommunicator
-// purpose : Creates a communicator by the library loading
-// =======================================================================
-Standard_EXPORTEXTERNC PluginAPI_Communicator* CreateCommunicator()
-{
-  return new DFBrowser_Communicator();
-}
+#include <inspector/TInspector_PluginParameters.hxx>
+#include <inspector/TInspector_Preferences.hxx>
+#include <inspector/TInspector_Window.hxx>
 
 // =======================================================================
 // function : Constructor
 // purpose :
 // =======================================================================
-DFBrowser_Communicator::DFBrowser_Communicator()
-    : PluginAPI_Communicator(),
-      myWindow(0)
+TInspector_PluginParameters::TInspector_PluginParameters(TInspector_Window* theWindow)
+    : myWindow(theWindow),
+      myPreferences(new TInspector_Preferences())
 {
-  myWindow = new DFBrowser_Window();
+  myPreferences->SetDirectory(GetTemporaryDirectory());
 }
 
 // =======================================================================
 // function : SetParameters
 // purpose :
 // =======================================================================
-void DFBrowser_Communicator::SetParameters(
-  const Handle(PluginAPI_PluginParameters)& theParameters)
+void TInspector_PluginParameters::SetParameters(
+  const TCollection_AsciiString&                      thePluginName,
+  const NCollection_List<Handle(Standard_Transient)>& theParameters,
+  const Standard_Boolean&                             theToActivatePlugin)
 {
-  myWindow->SetParameters(theParameters);
-  myWindow->UpdateContent();
+  PluginAPI_PluginParameters::SetParameters(thePluginName, theParameters, Standard_False);
+
+  if (!theToActivatePlugin)
+    return;
+
+  SetSelected(thePluginName, theParameters);
+  myWindow->ActivateTool(thePluginName);
+}
+
+// =======================================================================
+// function : SetTemporaryDirectory
+// purpose :
+// =======================================================================
+void TInspector_PluginParameters::SetTemporaryDirectory(const TCollection_AsciiString& thePath)
+{
+  if (thePath.IsEqual(myPreferences->GetDirectory()))
+    return;
+
+  myPreferences->SetDirectory(thePath);
 }

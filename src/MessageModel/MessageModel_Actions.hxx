@@ -20,7 +20,7 @@
 #include <Standard_Transient.hxx>
 
 #include <inspector/MessageModel_ActionType.hxx>
-#include <inspector/TInspectorAPI_PluginParameters.hxx>
+#include <inspector/PluginAPI_PluginParameters.hxx>
 
 #include <Standard_WarningsDisable.hxx>
 #include <QObject>
@@ -65,7 +65,7 @@ public:
 
   //! Sets parameters container, it should be used when the plugin is initialized or in update
   //! content \param theParameters a parameters container
-  void SetParameters(const Handle(TInspectorAPI_PluginParameters)& theParameters)
+  void SetParameters(const Handle(PluginAPI_PluginParameters)& theParameters)
   {
     myParameters = theParameters;
   }
@@ -92,7 +92,7 @@ protected:
 protected:
   MessageModel_TreeModel*                 myTreeModel;      //< tree model
   QItemSelectionModel*                    mySelectionModel; //< selection model
-  Handle(TInspectorAPI_PluginParameters)  myParameters;     //!< plugins parameters container
+  Handle(PluginAPI_PluginParameters)  myParameters;     //!< plugins parameters container
   QMap<MessageModel_ActionType, QAction*> myActions;        //!< container of all actions
 };
 

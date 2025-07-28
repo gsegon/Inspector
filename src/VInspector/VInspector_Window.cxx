@@ -191,7 +191,7 @@ void VInspector_Window::FillActionsMenu(void* theMenu)
 // function : GetPreferences
 // purpose :
 // =======================================================================
-void VInspector_Window::GetPreferences(TInspectorAPI_PreferencesDataMap& theItem)
+void VInspector_Window::GetPreferences(PluginAPI_PreferencesDataMap& theItem)
 {
   theItem.Bind("geometry",
                TreeModel_Tools::ToString(myMainWindow->saveState()).toStdString().c_str());
@@ -245,7 +245,7 @@ void VInspector_Window::GetPreferences(TInspectorAPI_PreferencesDataMap& theItem
 // function : SetPreferences
 // purpose :
 // =======================================================================
-void VInspector_Window::SetPreferences(const TInspectorAPI_PreferencesDataMap& theItem)
+void VInspector_Window::SetPreferences(const PluginAPI_PreferencesDataMap& theItem)
 {
   if (theItem.IsEmpty())
   {
@@ -668,7 +668,7 @@ void VInspector_Window::onExportToShapeView()
       if (aShape.IsNull())
         continue;
       aParameters.Append(aShape.TShape());
-      anItemNames.Append(TInspectorAPI_PluginParameters::ParametersToString(aShape));
+      anItemNames.Append(PluginAPI_PluginParameters::ParametersToString(aShape));
       anExportedPointers.append(Standard_Dump::GetPointerInfo(aShape.TShape(), true).ToCString());
     }
   }

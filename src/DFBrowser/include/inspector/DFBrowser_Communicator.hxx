@@ -17,7 +17,7 @@
 #define DFBrowser_Communicator_H
 
 #include <inspector/DFBrowser_Window.hxx>
-#include <inspector/TInspectorAPI_Communicator.hxx>
+#include <inspector/PluginAPI_Communicator.hxx>
 
 #include <Standard.hxx>
 #include <Standard_Macro.hxx>
@@ -30,7 +30,7 @@ class DFBrowser_Window;
 
 //! \class DFBrowser_Communicator.
 //! \brief This is a connector from TInspector application to DFBrowser view
-class DFBrowser_Communicator : public QObject, public TInspectorAPI_Communicator
+class DFBrowser_Communicator : public QObject, public PluginAPI_Communicator
 {
 public:
   //! Constructor
@@ -47,7 +47,7 @@ public:
   //! Sets parameters container, it should be used when the plugin is initialized or in update
   //! content \param theParameters a parameters container
   Standard_EXPORT virtual void SetParameters(
-    const Handle(TInspectorAPI_PluginParameters)& theParameters) Standard_OVERRIDE;
+    const Handle(PluginAPI_PluginParameters)& theParameters) Standard_OVERRIDE;
 
   //! Provides container for actions available in inspector on general level
   //! \param theMenu if Qt implementation, it is QMenu object
@@ -58,14 +58,14 @@ public:
 
   //! Returns plugin preferences, empty implementation by default
   //! \param theItem container of preference elements
-  virtual void GetPreferences(TInspectorAPI_PreferencesDataMap& theItem) Standard_OVERRIDE
+  virtual void GetPreferences(PluginAPI_PreferencesDataMap& theItem) Standard_OVERRIDE
   {
     myWindow->GetPreferences(theItem);
   }
 
   //! Stores plugin preferences, empty implementation by default
   //! \param theItem container of preference elements
-  virtual void SetPreferences(const TInspectorAPI_PreferencesDataMap& theItem) Standard_OVERRIDE
+  virtual void SetPreferences(const PluginAPI_PreferencesDataMap& theItem) Standard_OVERRIDE
   {
     myWindow->SetPreferences(theItem);
   }

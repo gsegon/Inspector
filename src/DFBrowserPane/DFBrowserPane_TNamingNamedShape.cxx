@@ -22,7 +22,7 @@
 #include <inspector/DFBrowserPane_SelectionKind.hxx>
 #include <inspector/DFBrowserPane_TableView.hxx>
 #include <inspector/DFBrowserPane_Tools.hxx>
-#include <inspector/TInspectorAPI_PluginParameters.hxx>
+#include <inspector/PluginAPI_PluginParameters.hxx>
 
 #include <AIS_InteractiveObject.hxx>
 #include <AIS_Shape.hxx>
@@ -407,7 +407,7 @@ void DFBrowserPane_TNamingNamedShape::GetSelectionParameters(
   if (aShape.IsNull())
     return;
   theParameters.Append(aShape.TShape());
-  theItemNames.Append(TInspectorAPI_PluginParameters::ParametersToString(aShape));
+  theItemNames.Append(PluginAPI_PluginParameters::ParametersToString(aShape));
 }
 
 // =======================================================================

@@ -29,7 +29,7 @@
 #include <ViewerTest.hxx>
 #include <ViewerTest_DoubleMapOfInteractiveAndName.hxx>
 
-#include <inspector/TInspectorAPI_PluginParameters.hxx>
+#include <inspector/PluginAPI_PluginParameters.hxx>
 #include <inspector/TInspector_Communicator.hxx>
 
 #if !defined(_WIN32)
@@ -181,7 +181,7 @@ static int tinspector(Draw_Interpretor& di, Standard_Integer theArgsNb, const ch
       if (anArgPlugins.IsEmpty())
       {
         aDefaultParameters.Append(aShape.TShape());
-        anItemNamesToSelect.Append(TInspectorAPI_PluginParameters::ParametersToString(aShape));
+        anItemNamesToSelect.Append(PluginAPI_PluginParameters::ParametersToString(aShape));
       }
       else
       {
@@ -192,7 +192,7 @@ static int tinspector(Draw_Interpretor& di, Standard_Integer theArgsNb, const ch
           NCollection_List<Handle(Standard_Transient)> aPluginParameters;
           aParameters.Find(anArgIt.Value(), aPluginParameters);
           aPluginParameters.Append(aShape.TShape());
-          anItemNamesToSelect.Append(TInspectorAPI_PluginParameters::ParametersToString(aShape));
+          anItemNamesToSelect.Append(PluginAPI_PluginParameters::ParametersToString(aShape));
           aParameters.Bind(anArgIt.Value(), aPluginParameters);
         }
       }
@@ -257,7 +257,7 @@ static int tinspector(Draw_Interpretor& di, Standard_Integer theArgsNb, const ch
       if (!aShape.IsNull())
       {
         anObjectsToSelect.Append(aShape.TShape());
-        anItemNamesToSelect.Append(TInspectorAPI_PluginParameters::ParametersToString(aShape));
+        anItemNamesToSelect.Append(PluginAPI_PluginParameters::ParametersToString(aShape));
       }
       // search prsentations with given name
       Handle(AIS_InteractiveObject) anIO;

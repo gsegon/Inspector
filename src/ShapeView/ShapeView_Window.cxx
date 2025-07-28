@@ -185,7 +185,7 @@ void ShapeView_Window::FillActionsMenu(void* theMenu)
 // function : GetPreferences
 // purpose :
 // =======================================================================
-void ShapeView_Window::GetPreferences(TInspectorAPI_PreferencesDataMap& theItem)
+void ShapeView_Window::GetPreferences(PluginAPI_PreferencesDataMap& theItem)
 {
   theItem.Bind("geometry",
                TreeModel_Tools::ToString(myMainWindow->saveState()).toStdString().c_str());
@@ -203,7 +203,7 @@ void ShapeView_Window::GetPreferences(TInspectorAPI_PreferencesDataMap& theItem)
 // function : SetPreferences
 // purpose :
 // =======================================================================
-void ShapeView_Window::SetPreferences(const TInspectorAPI_PreferencesDataMap& theItem)
+void ShapeView_Window::SetPreferences(const PluginAPI_PreferencesDataMap& theItem)
 {
   if (theItem.IsEmpty())
   {
@@ -309,7 +309,7 @@ void ShapeView_Window::Init(NCollection_List<Handle(Standard_Transient)>& thePar
       if (aParamsIt.More())
       {
         // each Transient object has own location/orientation description
-        TInspectorAPI_PluginParameters::ParametersToShape(aParamsIt.Value(), aShape);
+        PluginAPI_PluginParameters::ParametersToShape(aParamsIt.Value(), aShape);
         aParamsIt.Next();
       }
       addShape(aShape);

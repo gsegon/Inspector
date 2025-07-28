@@ -31,7 +31,7 @@
 // function :  CreateCommunicator
 // purpose : Creates a communicator by the library loading
 // =======================================================================
-Standard_EXPORTEXTERNC TInspectorAPI_Communicator* CreateCommunicator()
+Standard_EXPORTEXTERNC PluginAPI_Communicator* CreateCommunicator()
 {
   return new VInspector_Communicator();
 }
@@ -41,7 +41,7 @@ Standard_EXPORTEXTERNC TInspectorAPI_Communicator* CreateCommunicator()
 // purpose :
 // =======================================================================
 VInspector_Communicator::VInspector_Communicator()
-    : TInspectorAPI_Communicator(),
+    : PluginAPI_Communicator(),
       myWindow(0)
 {
   myWindow = new VInspector_Window();

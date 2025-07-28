@@ -19,7 +19,7 @@
 #include <inspector/MessageModel_ItemRoot.hxx>
 #include <inspector/MessageModel_ItemAlert.hxx>
 #include <inspector/MessageModel_TreeModel.hxx>
-#include <inspector/TInspectorAPI_PluginParameters.hxx>
+#include <inspector/PluginAPI_PluginParameters.hxx>
 #include <inspector/ViewControl_Tools.hxx>
 
 #include <BRepBuilderAPI_MakeEdge.hxx>
@@ -263,7 +263,7 @@ void MessageModel_Actions::OnExportToShapeView()
     if (aShape.IsNull())
       continue;
     aPluginParameters.Append(aShape.TShape());
-    anItemNames.Append(TInspectorAPI_PluginParameters::ParametersToString(aShape));
+    anItemNames.Append(PluginAPI_PluginParameters::ParametersToString(aShape));
 
     anExportedPointers.append(Standard_Dump::GetPointerInfo(aShape.TShape(), true).ToCString());
   }

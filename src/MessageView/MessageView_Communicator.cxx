@@ -19,7 +19,7 @@
 // function :  CreateCommunicator
 // purpose : Creates a communicator by the library loading
 // =======================================================================
-Standard_EXPORTEXTERNC TInspectorAPI_Communicator* CreateCommunicator()
+Standard_EXPORTEXTERNC PluginAPI_Communicator* CreateCommunicator()
 {
   return new MessageView_Communicator();
 }

@@ -219,7 +219,7 @@ void MessageView_Window::FillActionsMenu(void* theMenu)
 // function : GetPreferences
 // purpose :
 // =======================================================================
-void MessageView_Window::GetPreferences(TInspectorAPI_PreferencesDataMap& theItem)
+void MessageView_Window::GetPreferences(PluginAPI_PreferencesDataMap& theItem)
 {
   theItem.Clear();
   theItem.Bind("geometry",
@@ -248,7 +248,7 @@ void MessageView_Window::GetPreferences(TInspectorAPI_PreferencesDataMap& theIte
 // function : SetPreferences
 // purpose :
 // =======================================================================
-void MessageView_Window::SetPreferences(const TInspectorAPI_PreferencesDataMap& theItem)
+void MessageView_Window::SetPreferences(const PluginAPI_PreferencesDataMap& theItem)
 {
   for (TInspectorAPI_IteratorOfPreferencesDataMap anItemIt(theItem); anItemIt.More();
        anItemIt.Next())

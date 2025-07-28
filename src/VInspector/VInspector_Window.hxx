@@ -20,7 +20,7 @@
 #include <NCollection_List.hxx>
 #include <SelectMgr_EntityOwner.hxx>
 
-#include <inspector/TInspectorAPI_PluginParameters.hxx>
+#include <inspector/PluginAPI_PluginParameters.hxx>
 #include <inspector/View_DisplayActionType.hxx>
 
 #include <Standard_WarningsDisable.hxx>
@@ -63,7 +63,7 @@ public:
 
   //! Sets parameters container, it should be used when the plugin is initialized or in update
   //! content \param theParameters a parameters container
-  void SetParameters(const Handle(TInspectorAPI_PluginParameters)& theParameters)
+  void SetParameters(const Handle(PluginAPI_PluginParameters)& theParameters)
   {
     myParameters = theParameters;
   }
@@ -74,11 +74,11 @@ public:
 
   //! Returns plugin preferences: dock widgets state, tree view columns.
   //! \param theItem container of preference elements
-  Standard_EXPORT void GetPreferences(TInspectorAPI_PreferencesDataMap& theItem);
+  Standard_EXPORT void GetPreferences(PluginAPI_PreferencesDataMap& theItem);
 
   //! Applies plugin preferences
   //! \param theItem container of preference elements
-  Standard_EXPORT void SetPreferences(const TInspectorAPI_PreferencesDataMap& theItem);
+  Standard_EXPORT void SetPreferences(const PluginAPI_PreferencesDataMap& theItem);
 
   //! Applies parameters to Init controls, opens files if there are in parameters, updates OCAF tree
   //! view model
@@ -204,7 +204,7 @@ private:
   View_Window* myViewWindow; //!< temporary view window, it is created if Open is called but context
                              //!< is still NULL
 
-  Handle(TInspectorAPI_PluginParameters) myParameters; //!< plugins parameters container
+  Handle(PluginAPI_PluginParameters) myParameters; //!< plugins parameters container
 
   View_Displayer*
     myDisplayer; //!< class to display presentations/preview if myMainWindow is not used

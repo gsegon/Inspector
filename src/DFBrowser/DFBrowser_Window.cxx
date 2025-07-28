@@ -284,7 +284,7 @@ void DFBrowser_Window::FillActionsMenu(void* theMenu)
 // function : GetPreferences
 // purpose :
 // =======================================================================
-void DFBrowser_Window::GetPreferences(TInspectorAPI_PreferencesDataMap& theItem)
+void DFBrowser_Window::GetPreferences(PluginAPI_PreferencesDataMap& theItem)
 {
   theItem.Bind("geometry",
                TreeModel_Tools::ToString(myMainWindow->saveState()).toStdString().c_str());
@@ -303,7 +303,7 @@ void DFBrowser_Window::GetPreferences(TInspectorAPI_PreferencesDataMap& theItem)
 // function : SetPreferences
 // purpose :
 // =======================================================================
-void DFBrowser_Window::SetPreferences(const TInspectorAPI_PreferencesDataMap& theItem)
+void DFBrowser_Window::SetPreferences(const PluginAPI_PreferencesDataMap& theItem)
 {
   if (theItem.IsEmpty())
   {

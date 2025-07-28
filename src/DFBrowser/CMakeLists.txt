@@ -39,7 +39,7 @@ add_library(TKDFBrowser SHARED
 )
 target_include_directories(TKDFBrowser PUBLIC include)
 
-target_link_libraries(TKDFBrowser PUBLIC inspector_tinspector_api)
+target_link_libraries(TKDFBrowser PUBLIC plugin_api)
 target_link_libraries(TKDFBrowser PRIVATE inspector_tree_model)
 
 target_link_libraries(TKDFBrowser PRIVATE dfbrowser_pane)

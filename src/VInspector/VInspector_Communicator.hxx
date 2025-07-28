@@ -20,11 +20,11 @@
 #include <Standard_Macro.hxx>
 #include <inspector/VInspector_Window.hxx>
 
-#include <inspector/TInspectorAPI_Communicator.hxx>
+#include <inspector/PluginAPI_Communicator.hxx>
 
 //! \class VInspector_Communicator.
 //! \brief This is a connector from TInspector application to VInspector view
-class VInspector_Communicator : public TInspectorAPI_Communicator
+class VInspector_Communicator : public PluginAPI_Communicator
 {
 public:
   //! Constructor
@@ -40,7 +40,7 @@ public:
 
   //! Sets parameters container, it should be used when the plugin is initialized or in update
   //! content \param theParameters a parameters container
-  virtual void SetParameters(const Handle(TInspectorAPI_PluginParameters)& theParameters)
+  virtual void SetParameters(const Handle(PluginAPI_PluginParameters)& theParameters)
     Standard_OVERRIDE
   {
     myWindow->SetParameters(theParameters);
@@ -55,14 +55,14 @@ public:
 
   //! Returns plugin preferences, empty implementation by default
   //! \param theItem container of preference elements
-  virtual void GetPreferences(TInspectorAPI_PreferencesDataMap& theItem) Standard_OVERRIDE
+  virtual void GetPreferences(PluginAPI_PreferencesDataMap& theItem) Standard_OVERRIDE
   {
     myWindow->GetPreferences(theItem);
   }
 
   //! Stores plugin preferences, empty implementation by default
   //! \param theItem container of preference elements
-  virtual void SetPreferences(const TInspectorAPI_PreferencesDataMap& theItem) Standard_OVERRIDE
+  virtual void SetPreferences(const PluginAPI_PreferencesDataMap& theItem) Standard_OVERRIDE
   {
     myWindow->SetPreferences(theItem);
   }
