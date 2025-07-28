@@ -42,7 +42,7 @@ add_library(inspector_tinspector SHARED
 target_include_directories(inspector_tinspector PUBLIC include)
 
 target_link_libraries(inspector_tinspector PUBLIC inspector_tinspector_api)
-target_link_libraries(inspector_tinspector PRIVATE inspector_view)
+target_link_libraries(inspector_tinspector PRIVATE view)
 
 
 

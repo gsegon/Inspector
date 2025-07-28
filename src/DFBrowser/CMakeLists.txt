@@ -44,7 +44,7 @@ target_link_libraries(TKDFBrowser PRIVATE inspector_tree_model)
 
 target_link_libraries(TKDFBrowser PRIVATE dfbrowser_pane)
 target_link_libraries(TKDFBrowser PRIVATE view_control)
-target_link_libraries(TKDFBrowser PRIVATE inspector_view)
+target_link_libraries(TKDFBrowser PRIVATE view)
 
 # Link OCC targets
 target_link_libraries(TKDFBrowser PRIVATE

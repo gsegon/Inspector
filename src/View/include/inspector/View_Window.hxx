@@ -17,6 +17,7 @@
 #define View_Window_H
 
 #include <AIS_InteractiveContext.hxx>
+#include <QGridLayout>
 #include <inspector/View_ContextType.hxx>
 
 #include <Standard_WarningsDisable.hxx>
@@ -136,6 +137,7 @@ private:
   View_Widget*    myView;           //!< view widget
   QToolBar*       myActionsToolBar; //!< actions tool bar
   View_ToolBar*   myViewToolBar;    //!< window tool bar
+  std::unique_ptr<QGridLayout>    myLayout;         //!< layout
 };
 
 #endif

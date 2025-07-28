@@ -26,7 +26,7 @@ target_link_libraries(view_control INTERFACE view_control_types)
 target_link_libraries(view_control PUBLIC inspector_tree_model)
 
 # Link OCC targets
-target_link_libraries(view_control PRIVATE
+target_link_libraries(view_control PUBLIC
         TKernel
 #        ${OpenCASCADE_ModelingData_LIBRARIES}
 #        ${OpenCASCADE_ModelingAlgorithms_LIBRARIES}
@@ -35,7 +35,7 @@ target_link_libraries(view_control PRIVATE
 )
 
 # Link QT targets
-target_link_libraries(view_control PRIVATE
+target_link_libraries(view_control PUBLIC
         Qt5::Core
         Qt5::Gui
         Qt5::Widgets

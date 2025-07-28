@@ -48,13 +48,13 @@ View_Window::View_Window(QWidget*                              theParent,
                          const bool                            isFitAllActive)
     : QWidget(theParent)
 {
-  QGridLayout* aViewLayout = new QGridLayout(this);
-  aViewLayout->setContentsMargins(0, 0, 0, 0);
-  aViewLayout->setSpacing(DEFAULT_SPACING);
+  myLayout = std::make_unique<QGridLayout>(this);
+  myLayout->setContentsMargins(0, 0, 0, 0);
+  myLayout->setSpacing(DEFAULT_SPACING);
 
   myView        = new View_Widget(this, theContext, isFitAllActive);
   myViewToolBar = new View_ToolBar(this, isUseKeepView);
-  aViewLayout->addWidget(myViewToolBar->GetControl(), 0, 0, 1, 2);
+  myLayout->addWidget(myViewToolBar->GetControl(), 0, 0, 1, 2);
   connect(myViewToolBar, SIGNAL(contextChanged()), this, SLOT(onViewSelectorActivated()));
   connect(myViewToolBar, SIGNAL(actionClicked(int)), this, SLOT(onToolBarActionClicked(int)));
 
@@ -76,9 +76,9 @@ View_Window::View_Window(QWidget*                              theParent,
   myActionsToolBar->addWidget(myView->GetWidget(View_ViewActionType_FitAllId));
   myActionsToolBar->addAction(myView->ViewAction(View_ViewActionType_DisplayModeId));
 
-  aViewLayout->addWidget(myActionsToolBar, 1, 0);
-  aViewLayout->addWidget(myView, 1, 1);
-  aViewLayout->setRowStretch(1, 1);
+  myLayout->addWidget(myActionsToolBar, 1, 0);
+  myLayout->addWidget(myView, 1, 1);
+  myLayout->setRowStretch(1, 1);
 
   Handle(AIS_InteractiveContext) aContext = myView->GetViewer()->GetContext();
   myViewToolBar->SetContext(View_ContextType_Own, aContext);

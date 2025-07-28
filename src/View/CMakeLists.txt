@@ -8,7 +8,8 @@ file(GLOB_RECURSE INSPECTOR_HEADERS
         "include/inspector/*.hxx"
 )
 
-add_library(inspector_view
+add_library(view
+
         View_Displayer.cxx
         View_DisplayPreview.cxx
         View_PreviewParameters.cxx
@@ -19,22 +20,25 @@ add_library(inspector_view
         ${RESOURCES_RCC}
         ${INSPECTOR_HEADERS}    # Added to force MOC processing headers
 )
-target_include_directories(inspector_view PUBLIC include)
+target_include_directories(view PUBLIC include)
 
 foreach (libr ${OpenCASCADE_FoundationClasses_LIBRARIES})
     message("libr: ${libr}")
 endforeach ()
 
 # Link OCC targets
-target_link_libraries(inspector_view PRIVATE
+target_link_libraries(view PUBLIC
         TKernel
 )
 
-target_link_libraries(inspector_view PUBLIC view_control)
+target_link_libraries(view PUBLIC view_control)
 
 # Link QT targets
-target_link_libraries(inspector_view PRIVATE
+target_link_libraries(view PUBLIC
         Qt5::Core
         Qt5::Gui
         Qt5::Widgets
 )
+
+
+add_subdirectory(GTest)
