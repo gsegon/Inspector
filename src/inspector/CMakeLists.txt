@@ -5,23 +5,13 @@ else()
     find_package(OpenCASCADE REQUIRED)
 endif()
 
-## Find QT
-#find_package(Qt5 REQUIRED COMPONENTS
-#        Core
-#        Gui
-#        Widgets
-#        Xml)
-#
-## Setup QT MOC, RCC and UIC
-#set(CMAKE_AUTOMOC ON)
-#set(CMAKE_AUTORCC ON)
-#set(CMAKE_AUTOUIC ON)
-
 # Setup QT resources
 set(RESOURCE_FILES_TINSPECTOR
         TInspector.qrc
 )
 qt_add_resources(RESOURCES_RCC_TINSPECTOR ${RESOURCE_FILES_TINSPECTOR})
+
+
 
 add_library(inspector SHARED
         TInspector_Communicator.cxx
@@ -37,6 +27,12 @@ add_library(inspector SHARED
         include/inspector/TInspector_Window.hxx
         include/inspector/TInspector_OpenFileDialog.hxx
 
+)
+
+# Set RPATH for the build tree
+set_target_properties(inspector PROPERTIES
+        BUILD_WITH_INSTALL_RPATH FALSE
+        SKIP_BUILD_RPATH FALSE
 )
 
 target_include_directories(inspector PUBLIC
@@ -61,10 +57,10 @@ target_link_libraries(inspector PRIVATE
 
 # Link QT targets
 target_link_libraries(inspector PUBLIC
-        Qt5::Core
-        Qt5::Gui
-        Qt5::Widgets
-        Qt5::Xml
+        ${QtX}::Core
+        ${QtX}::Gui
+        ${QtX}::Widgets
+        ${QtX}::Xml
 )
 
 

@@ -9,13 +9,18 @@ else()
 endif()
 
 # Find QT
-find_package(Qt5 REQUIRED COMPONENTS
+set(QtX "Qt6" CACHE STRING "Qt version to use (Qt5, or Qt6)")
+set_property(CACHE QtX PROPERTY STRINGS "Qt5" "Qt6")
+message(STATUS "Using Qt version: ${QtX}")
+
+find_package(${QtX} REQUIRED COMPONENTS
         Core
         Gui
         Widgets
-        Xml)
+        Xml
+)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
 # Setup QT MOC, RCC and UIC
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOMOC_EXTENSIONS ".h;.hh;.hpp;.hxx;.cxx;.cpp;.cc")
@@ -32,7 +37,6 @@ set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
 # Add the automatically determined parts of the RPATH
 # which point to directories outside the build tree to the install RPATH
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
-
 
 # Add src
 add_subdirectory(src)

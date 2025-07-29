@@ -39,6 +39,6 @@ target_link_libraries(dfbrowser_pane PRIVATE
 
 # Link QT targets
 target_link_libraries(dfbrowser_pane PRIVATE
-        Qt5::Core
-        Qt5::Widgets
+        ${QtX}::Core
+        ${QtX}::Widgets
 )

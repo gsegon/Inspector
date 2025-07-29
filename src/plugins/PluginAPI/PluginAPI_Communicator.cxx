@@ -59,7 +59,7 @@ PluginAPI_Communicator* PluginAPI_Communicator::LoadPluginLibrary(
   }
 
   if (!modLib)
-    std::cout << "Ayo! Failed to load plugin: " << aPluginLibraryName.ToCString() << std::endl;
+    std::cout << "Failed to load plugin: " << aPluginLibraryName.ToCString() << std::endl;
   else
   {
 #ifdef _WIN32

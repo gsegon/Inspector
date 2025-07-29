@@ -37,8 +37,11 @@ target_link_libraries(view_control PUBLIC
 )
 
 # Link QT targets
+
+
+message("QtX: ${QtX}")
 target_link_libraries(view_control PUBLIC
-        Qt5::Core
-        Qt5::Gui
-        Qt5::Widgets
+        ${QtX}::Core
+        ${QtX}::Gui
+        ${QtX}::Widgets
 )

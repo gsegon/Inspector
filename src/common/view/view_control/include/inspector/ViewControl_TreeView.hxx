@@ -16,12 +16,13 @@
 #ifndef ViewControl_TreeView_H
 #define ViewControl_TreeView_H
 
-#include <Standard.hxx>
+// #include <Standard.hxx>
 
-#include <Standard_WarningsDisable.hxx>
-#include <QSize>
+// #include <Standard_WarningsDisable.hxx>
+#include <QWidget>
 #include <QTreeView>
-#include <Standard_WarningsRestore.hxx>
+#include <QSize>
+// #include <Standard_WarningsRestore.hxx>
 
 class QWidget;
 

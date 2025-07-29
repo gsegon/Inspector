@@ -5,6 +5,6 @@ include("${Inspector_DIR}/InspectorTargets.cmake")
 
 include(CMakeFindDependencyMacro)
 find_dependency(OpenCASCADE REQUIRED HINTS ${OpenCASCADE_DIR})
-find_dependency(Qt5 REQUIRED Core Gui Widgets Xml)
+find_dependency(@QtX@ REQUIRED COMPONENTS Core Gui Widgets Xml)
 
 check_required_components(Inspector)
