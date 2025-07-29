@@ -11,6 +11,8 @@ set(RESOURCE_FILES_TINSPECTOR
 )
 qt_add_resources(RESOURCES_RCC_TINSPECTOR ${RESOURCE_FILES_TINSPECTOR})
 
+
+
 add_library(inspector SHARED
         TInspector_Communicator.cxx
         TInspector_OpenButton.cxx
@@ -25,6 +27,12 @@ add_library(inspector SHARED
         include/inspector/TInspector_Window.hxx
         include/inspector/TInspector_OpenFileDialog.hxx
 
+)
+
+# Set RPATH for the build tree
+set_target_properties(inspector PROPERTIES
+        BUILD_WITH_INSTALL_RPATH FALSE
+        SKIP_BUILD_RPATH FALSE
 )
 
 target_include_directories(inspector PUBLIC
@@ -49,10 +57,10 @@ target_link_libraries(inspector PRIVATE
 
 # Link QT targets
 target_link_libraries(inspector PUBLIC
-        Qt6::Core
-        Qt6::Gui
-        Qt6::Widgets
-        Qt6::Xml
+        ${QtX}::Core
+        ${QtX}::Gui
+        ${QtX}::Widgets
+        ${QtX}::Xml
 )
 
 

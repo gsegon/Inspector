@@ -42,10 +42,10 @@ target_link_libraries(view PUBLIC view_control)
 
 # Link QT targets
 target_link_libraries(view PUBLIC
-        Qt6::Core
-        Qt6::Gui
-        Qt6::Widgets
-        Qt6::Xml
+        ${QtX}::Core
+        ${QtX}::Gui
+        ${QtX}::Widgets
+        ${QtX}::Xml
 )
 
 add_subdirectory(GTest)

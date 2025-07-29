@@ -2,8 +2,13 @@
 add_executable(AppInspector
         AppInspector.cxx)
 
-add_definitions (-DHAVE_XLIB)
-target_link_libraries(AppInspector PRIVATE inspector)
+# Set RPATH for the build tree
+set_target_properties(AppInspector PROPERTIES
+        BUILD_WITH_INSTALL_RPATH FALSE
+        SKIP_BUILD_RPATH FALSE
+)
+
+target_link_libraries(AppInspector PUBLIC inspector)
 
 # Link OCC targets
 target_link_libraries(AppInspector PRIVATE
@@ -20,9 +25,9 @@ target_link_libraries(AppInspector PRIVATE
 
 # Link QT targets
 target_link_libraries(AppInspector PRIVATE
-        Qt6::Core
-        Qt6::Gui
-        Qt6::Widgets
+        ${QtX}::Core
+        ${QtX}::Gui
+        ${QtX}::Widgets
 )
 
 

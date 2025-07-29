@@ -22,7 +22,6 @@ target_include_directories(TKMessageModel PUBLIC include)
 
 target_link_libraries(TKMessageModel PUBLIC plugin_api)
 target_link_libraries(TKMessageModel PRIVATE tree_model)
-#target_link_libraries(TKMessageModel PRIVATE view)
 
 # Link OCC targets
 target_link_libraries(TKMessageModel PRIVATE
@@ -39,6 +38,6 @@ target_link_libraries(TKMessageModel PRIVATE
 
 # Link QT targets
 target_link_libraries(TKMessageModel PRIVATE
-        Qt6::Core
-        Qt6::Widgets
+        ${QtX}::Core
+        ${QtX}::Widgets
 )

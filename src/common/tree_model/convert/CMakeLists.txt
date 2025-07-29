@@ -9,7 +9,7 @@ else()
 endif()
 
 ## Find QT
-#find_package(Qt6 REQUIRED COMPONENTS
+#find_package(${QtX} REQUIRED COMPONENTS
 #        Core
 #        Gui
 #        Widgets )
@@ -34,6 +34,6 @@ target_link_libraries(convert PRIVATE
 
 # Link QT targets
 target_link_libraries(convert PRIVATE
-        Qt6::Core
+        ${QtX}::Core
 
 )

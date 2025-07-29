@@ -47,6 +47,6 @@ target_link_libraries(TKVInspector PRIVATE
 
 # Link QT targets
 target_link_libraries(TKVInspector PRIVATE
-        Qt6::Core
-        Qt6::Widgets
+        ${QtX}::Core
+        ${QtX}::Widgets
 )

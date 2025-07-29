@@ -9,7 +9,11 @@ else()
 endif()
 
 # Find QT
-find_package(Qt6 REQUIRED COMPONENTS
+set(QtX "Qt6" CACHE STRING "Qt version to use (Qt4, Qt5, or Qt6)")
+set_property(CACHE QtX PROPERTY STRINGS "Qt4" "Qt5" "Qt6")
+message(STATUS "Using Qt version: ${QtX}")
+
+find_package(${QtX} REQUIRED COMPONENTS
         Core
         Gui
         Widgets
