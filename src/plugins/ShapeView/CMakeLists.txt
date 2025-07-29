@@ -26,7 +26,7 @@ add_library(TKShapeView SHARED
 target_include_directories(TKShapeView PUBLIC include)
 
 target_link_libraries(TKShapeView PUBLIC plugin_api)
-target_link_libraries(TKShapeView PRIVATE inspector_tree_model)
+target_link_libraries(TKShapeView PRIVATE tree_model)
 target_link_libraries(TKShapeView PRIVATE view)
 
 # Link OCC targets

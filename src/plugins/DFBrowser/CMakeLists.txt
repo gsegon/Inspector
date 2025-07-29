@@ -11,8 +11,6 @@ file(GLOB_RECURSE INSPECTOR_HEADERS
         "include/inspector/*.hxx"
 )
 
-
-
 add_library(TKDFBrowser SHARED
         DFBrowser_AttributePaneStack.cxx
         DFBrowser_Communicator.cxx
@@ -40,14 +38,18 @@ add_library(TKDFBrowser SHARED
         ${INSPECTOR_HEADERS}    # Added to force MOC processing headers
 
 )
-target_include_directories(TKDFBrowser PUBLIC include)
+#target_include_directories(TKDFBrowser PUBLIC include)
 
 target_link_libraries(TKDFBrowser PUBLIC plugin_api)
-target_link_libraries(TKDFBrowser PRIVATE inspector_tree_model)
+target_link_libraries(TKDFBrowser PRIVATE tree_model)
 
 target_link_libraries(TKDFBrowser PRIVATE dfbrowser_pane)
 target_link_libraries(TKDFBrowser PRIVATE view_control)
 target_link_libraries(TKDFBrowser PRIVATE view)
+
+target_include_directories(TKDFBrowser PUBLIC
+        "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+        "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")
 
 # Link OCC targets
 target_link_libraries(TKDFBrowser PRIVATE

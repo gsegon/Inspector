@@ -16,8 +16,6 @@ target_link_libraries(AppInspector PRIVATE
         ${OpenCASCADE_DataExchange_LIBRARIES}
         ${OpenCASCADE_ApplicationFramework_LIBRARIES}
 
-
-
 )
 
 # Link QT targets

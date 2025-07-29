@@ -132,8 +132,10 @@ QString TInspector_OpenFileDialog::OpenFile(QWidget*           theParent,
 // =======================================================================
 TInspector_Communicator* TInspector_OpenFileDialog::Communicator()
 {
-  if (!MyCommunicator)
+  if (!MyCommunicator) {
     MyCommunicator = new TInspector_Communicator();
+    std::cout << "Communicator created" << std::endl;
+  }
   return MyCommunicator;
 }
 

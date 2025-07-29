@@ -15,7 +15,7 @@ add_library(TKMessageView SHARED
 target_include_directories(TKMessageView PUBLIC include)
 
 target_link_libraries(TKMessageView PUBLIC plugin_api)
-target_link_libraries(TKMessageView PRIVATE inspector_tree_model)
+target_link_libraries(TKMessageView PRIVATE tree_model)
 target_link_libraries(TKMessageView PRIVATE TKMessageModel)
 target_link_libraries(TKMessageView PRIVATE view)
 

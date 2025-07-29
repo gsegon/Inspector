@@ -20,10 +20,12 @@ add_library(view_control STATIC
         ViewControl_Tools.cxx
         ${INSPECTOR_HEADERS}    # Added to force MOC processing headers
 )
-target_include_directories(view_control PUBLIC include)
+target_include_directories(view_control INTERFACE
+        "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+        "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")
 
 target_link_libraries(view_control INTERFACE view_control_types)
-target_link_libraries(view_control PUBLIC inspector_tree_model)
+target_link_libraries(view_control PUBLIC tree_model)
 
 # Link OCC targets
 target_link_libraries(view_control PUBLIC

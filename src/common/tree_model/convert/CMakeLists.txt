@@ -19,21 +19,21 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-add_library(inspector_convert STATIC
+add_library(convert STATIC
         Convert_Tools.cxx
 )
 
-target_include_directories(inspector_convert PUBLIC include)
+target_include_directories(convert PUBLIC
+        "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+        "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")
 
 # Link OCC targets
-target_link_libraries(inspector_convert PRIVATE
+target_link_libraries(convert PRIVATE
         TKernel
-
 )
 
 # Link QT targets
-target_link_libraries(inspector_convert PRIVATE
+target_link_libraries(convert PRIVATE
         Qt5::Core
-#        Qt5::Gui
-#        Qt5::Widgets
+
 )

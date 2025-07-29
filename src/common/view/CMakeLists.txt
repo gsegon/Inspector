@@ -1,4 +1,4 @@
-add_subdirectory(ViewControl)
+add_subdirectory(view_control)
 
 # Setup QT resources
 set(RESOURCE_FILES_VIEW
@@ -24,7 +24,10 @@ add_library(view SHARED
         View_Window.cxx
 
 )
-target_include_directories(view PUBLIC include)
+
+target_include_directories(view PUBLIC
+        "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+        "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")
 
 foreach (libr ${OpenCASCADE_FoundationClasses_LIBRARIES})
     message("libr: ${libr}")

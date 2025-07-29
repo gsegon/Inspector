@@ -39,11 +39,15 @@ add_library(inspector SHARED
 
 )
 
-target_include_directories(inspector PUBLIC include)
+target_include_directories(inspector PUBLIC
+        "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+        "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")
 
 target_link_libraries(inspector PUBLIC plugin_api)
 target_link_libraries(inspector PRIVATE view)
 
+install(DIRECTORY include/
+        DESTINATION include)
 
 
 # Link OCC targets
