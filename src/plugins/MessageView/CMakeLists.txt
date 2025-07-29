@@ -34,6 +34,6 @@ target_link_libraries(TKMessageView PRIVATE
 
 # Link QT targets
 target_link_libraries(TKMessageView PRIVATE
-        Qt5::Core
-        Qt5::Widgets
+        Qt6::Core
+        Qt6::Widgets
 )

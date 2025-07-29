@@ -9,11 +9,12 @@ else()
 endif()
 
 # Find QT
-find_package(Qt5 REQUIRED COMPONENTS
+find_package(Qt6 REQUIRED COMPONENTS
         Core
         Gui
         Widgets
-        Xml)
+        Xml
+)
 
 set(CMAKE_CXX_STANDARD 20)
 # Setup QT MOC, RCC and UIC

@@ -44,6 +44,6 @@ target_link_libraries(TKShapeView PRIVATE
 
 # Link QT targets
 target_link_libraries(TKShapeView PRIVATE
-        Qt5::Core
-        Qt5::Widgets
+        Qt6::Core
+        Qt6::Widgets
 )

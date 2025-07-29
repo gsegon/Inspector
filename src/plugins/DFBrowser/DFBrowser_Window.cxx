@@ -59,7 +59,7 @@
 #include <inspector/ViewControl_MessageDialog.hxx>
 #include <inspector/ViewControl_Tools.hxx>
 
-#include <Standard_WarningsDisable.hxx>
+// #include <Standard_WarningsDisable.hxx>
 #include <QAction>
 #include <QApplication>
 #include <QComboBox>
@@ -77,6 +77,7 @@
 #include <QMessageBox>
 #include <QStatusBar>
 #include <QWidget>
+#include <QPoint>
 #if QT_VERSION < 0x050000
   #include <QWindowsStyle>
 #else
@@ -96,20 +97,23 @@ static Standard_Boolean MyIsUseDumpJson = Standard_False;
 // purpose :
 // =======================================================================
 DFBrowser_Window::DFBrowser_Window()
-    : myModule(0),
-      myParent(0),
-      myPropertyPanel(0),
-      myExportToShapeViewDialog(0)
+    : myModule(nullptr),
+      myParent(nullptr),
+      myPropertyPanel(nullptr),
+      myExportToShapeViewDialog(nullptr)
 {
-  myMainWindow = new QMainWindow(0);
+  myMainWindow = new QMainWindow(nullptr);
 
   // tree view
   myTreeView = new ViewControl_TreeView(myMainWindow);
   myTreeView->setContextMenuPolicy(Qt::CustomContextMenu);
-  connect(myTreeView,
-          SIGNAL(customContextMenuRequested(const QPoint&)),
-          this,
-          SLOT(onTreeViewContextMenuRequested(const QPoint&)));
+
+  // Most specific and correct
+  connect(myTreeView, SIGNAL(customContextMenuRequested(const QPoint&)),
+          this, SLOT(onTreeViewContextMenuRequested(const QPoint&)));
+
+
+
   new TreeModel_ContextMenu(myTreeView);
   ((ViewControl_TreeView*)myTreeView)
     ->SetPredefinedSize(
@@ -203,7 +207,12 @@ DFBrowser_Window::DFBrowser_Window()
   // dump view window
   QWidget*     aDumpWidget = new QWidget(myMainWindow);
   QVBoxLayout* aDumpLay    = new QVBoxLayout(aDumpWidget);
-  aDumpLay->setMargin(0);
+  #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0) || QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
+  aLay->setContentsMargins(0, 0, 0, 0);
+  #else
+  aLay->setMargin(0);
+  #endif
+
   myDumpView = new DFBrowser_DumpView(aDumpWidget);
   aDumpLay->addWidget(myDumpView->GetControl());
   QDockWidget* aDumpDockWidget = new QDockWidget(tr("Dump"), myMainWindow);

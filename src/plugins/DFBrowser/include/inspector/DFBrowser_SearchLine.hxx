@@ -34,7 +34,14 @@ class DFBrowser_SearchLineModel;
 class QAbstractItemModel;
 class QLineEdit;
 class QToolButton;
+#if QT_VERSION < QT_VERSION_CHECK(5, 0, 0)
+// Qt4 and earlier - QStringList was a separate class
 class QStringList;
+#else
+// Qt5 and newer - QStringList is a typedef of QList<QString>
+#include <QStringList>
+#endif
+
 
 //! \class DFBrowser_SearchLine
 //! It contains a line edit control with auto completion and search button

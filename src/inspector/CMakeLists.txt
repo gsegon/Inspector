@@ -5,18 +5,6 @@ else()
     find_package(OpenCASCADE REQUIRED)
 endif()
 
-## Find QT
-#find_package(Qt5 REQUIRED COMPONENTS
-#        Core
-#        Gui
-#        Widgets
-#        Xml)
-#
-## Setup QT MOC, RCC and UIC
-#set(CMAKE_AUTOMOC ON)
-#set(CMAKE_AUTORCC ON)
-#set(CMAKE_AUTOUIC ON)
-
 # Setup QT resources
 set(RESOURCE_FILES_TINSPECTOR
         TInspector.qrc
@@ -61,10 +49,10 @@ target_link_libraries(inspector PRIVATE
 
 # Link QT targets
 target_link_libraries(inspector PUBLIC
-        Qt5::Core
-        Qt5::Gui
-        Qt5::Widgets
-        Qt5::Xml
+        Qt6::Core
+        Qt6::Gui
+        Qt6::Widgets
+        Qt6::Xml
 )
 
 

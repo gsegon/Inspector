@@ -8,11 +8,11 @@ else()
     find_package(OpenCASCADE REQUIRED)
 endif()
 
-# Find QT
-find_package(Qt5 REQUIRED COMPONENTS
-        Core
-        Gui
-        Widgets )
+## Find QT
+#find_package(Qt6 REQUIRED COMPONENTS
+#        Core
+#        Gui
+#        Widgets )
 
 # Setup QT MOC, RCC and UIC
 set(CMAKE_AUTOMOC ON)
@@ -34,6 +34,6 @@ target_link_libraries(convert PRIVATE
 
 # Link QT targets
 target_link_libraries(convert PRIVATE
-        Qt5::Core
+        Qt6::Core
 
 )
