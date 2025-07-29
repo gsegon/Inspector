@@ -7,7 +7,7 @@ find_package(Inspector REQUIRED)
 
 add_executable(SomeInspectedApp main.cpp)
 
-target_link_libraries(SomeInspectedApp PUBLIC OCCInspector::plugin_api OCCInspector::inspector)
+target_link_libraries(SomeInspectedApp PUBLIC OCCInspector::inspector)
 
 target_link_libraries(SomeInspectedApp PRIVATE
         ${OpenCASCADE_FoundationClasses_LIBRARIES}

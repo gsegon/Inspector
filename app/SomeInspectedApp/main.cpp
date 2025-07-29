@@ -7,7 +7,6 @@
 #include <XCAFDoc_DocumentTool.hxx>
 #include <TDataStd_Name.hxx>
 
-#include <inspector/PluginAPI_Communicator.hxx>
 #include <inspector/TInspector_Communicator.hxx>
 
 
