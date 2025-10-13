@@ -20,6 +20,9 @@ add_library(view_control STATIC
         ViewControl_Tools.cxx
         ${INSPECTOR_HEADERS}    # Added to force MOC processing headers
 )
+set_target_properties(view_control PROPERTIES POSITION_INDEPENDENT_CODE ON)
+
+
 target_include_directories(view_control INTERFACE
         "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
         "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")

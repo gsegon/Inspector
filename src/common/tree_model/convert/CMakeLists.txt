@@ -22,6 +22,8 @@ set(CMAKE_AUTOUIC ON)
 add_library(convert STATIC
         Convert_Tools.cxx
 )
+set_target_properties(convert PROPERTIES POSITION_INDEPENDENT_CODE ON)
+
 
 target_include_directories(convert PUBLIC
         "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
