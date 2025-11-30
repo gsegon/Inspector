@@ -121,7 +121,7 @@ void TInspector_Preferences::loadPreferences()
     return;
 
   QDomDocument aDomDocument;
-  bool         aResult = aDomDocument.setContent(&aFile);
+  QDomDocument::ParseResult aResult = aDomDocument.setContent(&aFile);
   aFile.close();
   if (!aResult)
     return;
