@@ -29,11 +29,11 @@ add_library(inspector SHARED
 
 )
 
-# Set RPATH for the build tree
-set_target_properties(inspector PROPERTIES
-        BUILD_WITH_INSTALL_RPATH FALSE
-        SKIP_BUILD_RPATH FALSE
-)
+## Set RPATH for the build tree
+#set_target_properties(inspector PROPERTIES
+#        BUILD_WITH_INSTALL_RPATH FALSE
+#        SKIP_BUILD_RPATH FALSE
+#)
 
 target_include_directories(inspector PUBLIC
         "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"

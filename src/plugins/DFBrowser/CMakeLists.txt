@@ -47,11 +47,11 @@ target_link_libraries(TKDFBrowser PRIVATE dfbrowser_pane)
 target_link_libraries(TKDFBrowser PRIVATE view_control)
 target_link_libraries(TKDFBrowser PRIVATE view)
 
-# Set RPATH for the build tree
-set_target_properties(TKDFBrowser PROPERTIES
-        BUILD_WITH_INSTALL_RPATH FALSE
-        SKIP_BUILD_RPATH FALSE
-)
+## Set RPATH for the build tree
+#set_target_properties(TKDFBrowser PROPERTIES
+#        BUILD_WITH_INSTALL_RPATH FALSE
+#        SKIP_BUILD_RPATH FALSE
+#)
 
 target_include_directories(TKDFBrowser PUBLIC
         "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"

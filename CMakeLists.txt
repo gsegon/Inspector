@@ -29,20 +29,25 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC_DEPENDENCY_SCAN ON)
 
 
-# Set RPATH settings at the beginning of your top-level CMakeLists.txt
-# Make sure executables can find libraries after installation
-set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
-set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
+set(CMAKE_SKIP_BUILD_RPATH FALSE)
+set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
 
-# Add the automatically determined parts of the RPATH
-# which point to directories outside the build tree to the install RPATH
-set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+# Avoid CMake automatically appending link directories into install RPATH
+set(CMAKE_INSTALL_RPATH_USE_LINK_PATH FALSE)
+
 
 # Add src
 add_subdirectory(src)
 
 # Add app
 add_subdirectory(app)
+
+# RPATH setup
+set_target_properties(inspector PROPERTIES
+        INSTALL_RPATH "\$ORIGIN"
+        BUILD_RPATH "\$ORIGIN"
+)
+
 
 # Install config
 include(Install.cmake)
