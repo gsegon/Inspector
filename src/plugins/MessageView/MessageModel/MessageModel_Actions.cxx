@@ -162,7 +162,7 @@ Handle(Message_Report) MessageModel_Actions::getSelectedReport(QModelIndex& theR
 // purpose :
 // =======================================================================
 static Handle(Message_PrinterToReport) MyPrinterToReport;
-static Message_SequenceOfPrinters      MyDeactivatedPrinters;
+static NCollection_Sequence<opencascade::handle<Message_Printer>>      MyDeactivatedPrinters;
 
 void MessageModel_Actions::OnActivateReport()
 {

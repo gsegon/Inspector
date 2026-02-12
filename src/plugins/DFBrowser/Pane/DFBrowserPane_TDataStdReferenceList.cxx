@@ -19,7 +19,7 @@
 #include <inspector/DFBrowserPane_Tools.hxx>
 
 #include <TDataStd_ReferenceList.hxx>
-#include <TDF_ListIteratorOfLabelList.hxx>
+// #include <TDF_ListIteratorOfLabelList.hxx>
 
 #include <Standard_WarningsDisable.hxx>
 #include <QVariant>
@@ -38,7 +38,7 @@ void DFBrowserPane_TDataStdReferenceList::GetValues(const Handle(TDF_Attribute)&
   if (anAttribute.IsNull())
     return;
 
-  for (TDF_ListIteratorOfLabelList aLabelIt(anAttribute->List()); aLabelIt.More(); aLabelIt.Next())
+  for (NCollection_List<TDF_Label>::Iterator aLabelIt(anAttribute->List()); aLabelIt.More(); aLabelIt.Next())
   {
     theValues.append("Value");
     theValues.append(DFBrowserPane_Tools::GetEntry(aLabelIt.Value()).ToCString());
@@ -60,7 +60,7 @@ void DFBrowserPane_TDataStdReferenceList::GetReferences(
     Handle(TDataStd_ReferenceList)::DownCast(theAttribute);
   if (anAttribute.IsNull())
     return;
-  for (TDF_ListIteratorOfLabelList aLabelIt(anAttribute->List()); aLabelIt.More(); aLabelIt.Next())
+  for (NCollection_List<TDF_Label>::Iterator aLabelIt(anAttribute->List()); aLabelIt.More(); aLabelIt.Next())
   {
     const TDF_Label& aLabel = aLabelIt.Value();
     if (aSelectedEntries.contains(DFBrowserPane_Tools::GetEntry(aLabel).ToCString()))

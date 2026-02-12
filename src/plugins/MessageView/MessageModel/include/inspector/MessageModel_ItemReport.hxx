@@ -55,7 +55,7 @@ public:
   const Handle(Message_Report)& GetReport() const { return myReport; }
 
   //! Returns alert of the report for the parameter row
-  Standard_Boolean GetChildAlerts(const int theRow, Message_ListOfAlert& theAlerts) const
+  Standard_Boolean GetChildAlerts(const int theRow, NCollection_List<opencascade::handle<Message_Alert>>& theAlerts) const
   {
     return myChildAlerts.Find(theRow, theAlerts);
   }
@@ -116,7 +116,7 @@ private:
   }
 
 private:
-  NCollection_DataMap<Standard_Integer, Message_ListOfAlert>
+  NCollection_DataMap<Standard_Integer, NCollection_List<opencascade::handle<Message_Alert>>>
     myChildAlerts; //!< container of child alerts
 
   Handle(Message_Report)  myReport;      //!< current report

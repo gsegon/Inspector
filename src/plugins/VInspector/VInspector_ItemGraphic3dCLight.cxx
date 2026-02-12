@@ -101,7 +101,7 @@ void VInspector_ItemGraphic3dCLight::Init()
       {
         int aLightId   = Row() - 2 /*in parent*/;
         int aCurrentId = 0;
-        for (V3d_ListOfLightIterator aLightsIt(aViewer->ActiveLightIterator()); aLightsIt.More();
+        for (NCollection_List<opencascade::handle<Graphic3d_CLight>>::Iterator aLightsIt(aViewer->ActiveLightIterator()); aLightsIt.More();
              aLightsIt.Next(), aCurrentId++)
         {
           if (aCurrentId != aLightId)

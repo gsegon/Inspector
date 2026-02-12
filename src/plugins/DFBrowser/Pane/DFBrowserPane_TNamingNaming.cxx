@@ -23,7 +23,7 @@
 #include <inspector/DFBrowserPane_Tools.hxx>
 
 #include <TDF_Label.hxx>
-#include <TNaming_ListIteratorOfListOfNamedShape.hxx>
+// #include <TNaming_ListIteratorOfListOfNamedShape.hxx>
 #include <TNaming_Name.hxx>
 #include <TNaming_Naming.hxx>
 #include <TNaming_NamedShape.hxx>
@@ -139,7 +139,8 @@ void DFBrowserPane_TNamingNaming::GetValues(const Handle(TDF_Attribute)& theAttr
 
   // values from 14 till count of arguments
   int anArgIndex = 1;
-  for (TNaming_ListIteratorOfListOfNamedShape anArgIt(aNamingName.Arguments()); anArgIt.More();
+  using asd = NCollection_List<occ::handle<TNaming_NamedShape>>;
+  for (asd::Iterator anArgIt(aNamingName.Arguments()); anArgIt.More();
        anArgIt.Next(), anArgIndex++)
   {
     theValues << "Argument";
@@ -171,7 +172,8 @@ Handle(Standard_Transient) DFBrowserPane_TNamingNaming::GetPresentation(
   TopoDS_Compound aComp;
   aBuilder.MakeCompound(aComp);
   bool aHasShapes = false;
-  for (TNaming_ListIteratorOfListOfNamedShape aNamingIt(aNamingName.Arguments()); aNamingIt.More();
+  using asd = NCollection_List<occ::handle<TNaming_NamedShape>>;
+  for (asd::Iterator aNamingIt(aNamingName.Arguments()); aNamingIt.More();
        aNamingIt.Next())
   {
     Handle(TNaming_NamedShape) aShapeAttr = aNamingIt.Value();
@@ -207,7 +209,8 @@ void DFBrowserPane_TNamingNaming::GetReferences(const Handle(TDF_Attribute)& the
 
   QStringList aSelectedEntries =
     DFBrowserPane_TableView::GetSelectedColumnValues(getTableView()->GetTableView(), 1);
-  for (TNaming_ListIteratorOfListOfNamedShape aNamingIt(anAttribute->GetName().Arguments());
+  using asd = NCollection_List<occ::handle<TNaming_NamedShape>>;
+  for (asd::Iterator aNamingIt(anAttribute->GetName().Arguments());
        aNamingIt.More();
        aNamingIt.Next())
   {

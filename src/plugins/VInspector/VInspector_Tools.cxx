@@ -20,7 +20,7 @@
 
 #include <inspector/Convert_Tools.hxx>
 
-#include <AIS_ListIteratorOfListOfInteractive.hxx>
+// #include <AIS_ListIteratorOfListOfInteractive.hxx>
 #include <AIS_ListOfInteractive.hxx>
 #include <AIS_Selection.hxx>
 #include <AIS_Shape.hxx>
@@ -128,7 +128,7 @@ NCollection_List<Handle(SelectMgr_EntityOwner)> VInspector_Tools::ContextOwners(
     Handle(AIS_InteractiveObject) anIO = aIt.Value();
     if (anIO.IsNull())
       continue;
-    for (SelectMgr_SequenceOfSelection::Iterator aSelIter(anIO->Selections()); aSelIter.More();
+    for (NCollection_Sequence<opencascade::handle<SelectMgr_Selection>>::Iterator aSelIter(anIO->Selections()); aSelIter.More();
          aSelIter.Next())
     {
       Handle(SelectMgr_Selection) aSelection = aSelIter.Value();

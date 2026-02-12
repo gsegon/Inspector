@@ -17,7 +17,7 @@
 
 #include <AIS_InteractiveContext.hxx>
 #include <AIS_InteractiveObject.hxx>
-#include <AIS_ListIteratorOfListOfInteractive.hxx>
+// #include <AIS_ListIteratorOfListOfInteractive.hxx>
 #include <AIS_Shape.hxx>
 #include <AIS_Trihedron.hxx>
 #include <AIS_ViewCube.hxx>

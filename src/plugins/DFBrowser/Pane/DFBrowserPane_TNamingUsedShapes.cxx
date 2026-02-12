@@ -25,7 +25,7 @@
 
 #include <TDF_Label.hxx>
 
-#include <TNaming_DataMapIteratorOfDataMapOfShapePtrRefShape.hxx>
+// #include <TNaming_DataMapIteratorOfDataMapOfShapePtrRefShape.hxx>
 #include <TNaming_NamedShape.hxx>
 #include <TNaming_PtrRefShape.hxx>
 #include <TNaming_RefShape.hxx>
@@ -72,8 +72,11 @@ void DFBrowserPane_TNamingUsedShapes::GetValues(const Handle(TDF_Attribute)& the
     return;
 
   std::list<TCollection_AsciiString> aReferences;
-  TNaming_DataMapOfShapePtrRefShape& aMap = anAttribute->Map();
-  for (TNaming_DataMapIteratorOfDataMapOfShapePtrRefShape aRefIt(aMap); aRefIt.More();
+
+  using asd = NCollection_DataMap<TopoDS_Shape, TNaming_PtrRefShape, TopTools_ShapeMapHasher>;
+
+  asd& aMap = anAttribute->Map();
+  for (asd::Iterator aRefIt(aMap); aRefIt.More();
        aRefIt.Next())
   {
     TopoDS_Shape        aShape       = aRefIt.Key();
@@ -133,7 +136,9 @@ void DFBrowserPane_TNamingUsedShapes::GetAttributeReferences(
   if (aSelectedEntries.isEmpty())
     return;
 
-  for (TNaming_DataMapIteratorOfDataMapOfShapePtrRefShape aRefIt(anAttribute->Map()); aRefIt.More();
+  using asd = NCollection_DataMap<TopoDS_Shape, TNaming_PtrRefShape, TopTools_ShapeMapHasher>;
+
+  for (asd::Iterator aRefIt(anAttribute->Map()); aRefIt.More();
        aRefIt.Next())
   {
     TNaming_PtrRefShape aPtrRefShape = aRefIt.Value();

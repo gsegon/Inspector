@@ -295,7 +295,7 @@ void View_Widget::initViewActions()
 // =======================================================================
 void View_Widget::mousePressEvent(QMouseEvent* theEvent)
 {
-  if (myController->PressMouseButton(Graphic3d_Vec2i(theEvent->x(), theEvent->y()),
+  if (myController->PressMouseButton(NCollection_Vec2<int>(theEvent->x(), theEvent->y()),
                                      keyMouse(theEvent->button()),
                                      keyFlag(theEvent->modifiers()),
                                      Standard_False))
@@ -310,7 +310,7 @@ void View_Widget::mousePressEvent(QMouseEvent* theEvent)
 // =======================================================================
 void View_Widget::mouseReleaseEvent(QMouseEvent* theEvent)
 {
-  if (myController->ReleaseMouseButton(Graphic3d_Vec2i(theEvent->x(), theEvent->y()),
+  if (myController->ReleaseMouseButton(NCollection_Vec2<int>(theEvent->x(), theEvent->y()),
                                        keyMouse(theEvent->button()),
                                        keyFlag(theEvent->modifiers()),
                                        Standard_False))
@@ -330,7 +330,7 @@ void View_Widget::mouseMoveEvent(QMouseEvent* theEvent)
     return;
   }
 
-  myController->UpdateMousePosition(Graphic3d_Vec2i(theEvent->x(), theEvent->y()),
+  myController->UpdateMousePosition(NCollection_Vec2<int>(theEvent->x(), theEvent->y()),
                                     keyMouse(theEvent->button()),
                                     keyFlag(theEvent->modifiers()),
                                     Standard_False);

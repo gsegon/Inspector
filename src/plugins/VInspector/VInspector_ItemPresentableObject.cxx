@@ -18,7 +18,7 @@
 #include <AIS.hxx>
 #include <AIS_Shape.hxx>
 #include <AIS_ListOfInteractive.hxx>
-#include <AIS_ListIteratorOfListOfInteractive.hxx>
+// #include <AIS_ListIteratorOfListOfInteractive.hxx>
 
 #include <inspector/VInspector_ItemContext.hxx>
 #include <inspector/VInspector_Tools.hxx>
